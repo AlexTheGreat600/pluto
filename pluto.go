@@ -15,14 +15,17 @@ import (
 	"github.com/iancoleman/strcase"
 )
 
+/* Variable to confirm rename file or not */
+var confirmRename string
+
 /* Function to show the help of program */
 func plutoHelp() {
 
 	/* Show the pluto logo at the start */
-	color.Red	("___  _    _  _ ___ ____")
-	color.Red	("|__] |    |  |  |  |  |")
-	color.HiRed	("|    |___ |__|  |  |__|")
-	color.HiRed	("                       ")
+	color.HiBlue	("___  _    _  _ ___ ____")
+	color.HiBlue	("|__] |    |  |  |  |  |")
+	color.Blue		("|    |___ |__|  |  |__|")
+	color.Blue		("                       ")
 
 	/* Show pluto usage at start */
 	fmt.Printf("%s [name-type] [your-files]\n\n", color.HiWhiteString("PLUTO :"))
@@ -74,15 +77,19 @@ func fixFileName(filePath string) {
 	newFilePath := fmt.Sprintf("%s/%s", fileDir, newFileName)
 
 	/* Confirmation to rename or not */
-	var confirmRename string
-	fmt.Printf("%s -> %s -> %s: ", color.HiRedString("[" + fileName + "]"), color.HiGreenString("[" + newFileName + "]"), color.HiWhiteString("[y or n]"))
-	fmt.Scan(&confirmRename)
+	if (confirmRename != "a") {
+		fmt.Printf("%s -> %s -> %s: ", color.HiRedString("[" + fileName + "]"), color.HiGreenString("[" + newFileName + "]"), color.HiWhiteString("[y|a|n]"))
+		fmt.Scan(&confirmRename)
+
+	} else {
+		fmt.Printf("%s -> %s", color.HiRedString("[" + fileName + "]"), color.HiGreenString("[" + newFileName + "]"))
+	}
 
 	/* Rename the user provided files */
 	if (confirmRename == "n") {
 		return
 
-	} else if (confirmRename == "y") {
+	} else if (confirmRename == "y" || confirmRename == "a") {
 		os.Rename(filePath, newFilePath)
 	}
 }
