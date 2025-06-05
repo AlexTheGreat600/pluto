@@ -18,14 +18,16 @@ import (
 /* Variable to confirm rename file or not */
 var confirmRename string
 
-/* Function to show the help of program */
-func plutoHelp() {
-
-	/* Show the pluto logo at the start */
+/* Function to show the logo of program */
+func plutoLogo() {
 	color.HiBlue	("___  _    _  _ ___ ____")
 	color.HiBlue	("|__] |    |  |  |  |  |")
 	color.Blue		("|    |___ |__|  |  |__|")
 	color.Blue		("                       ")
+}
+
+/* Function to show the help of program */
+func plutoHelp() {
 
 	/* Show pluto usage at start */
 	fmt.Printf("%s [name-type] [your-files]\n\n", color.HiWhiteString("PLUTO :"))
@@ -35,9 +37,11 @@ func plutoHelp() {
 	fmt.Printf("%s %s | %s\n", color.HiRedString("*"), color.HiWhiteString("-k "), color.HiWhiteString("--kebab"))
 	fmt.Printf("%s %s | %s\n", color.HiGreenString("*"), color.HiWhiteString("-c "), color.HiWhiteString("--camel"))
 	fmt.Printf("%s %s | %s\n", color.HiBlueString("*"), color.HiWhiteString("-s "), color.HiWhiteString("--snake"))
-	fmt.Printf("%s %s | %s\n", color.HiYellowString("*"), color.HiWhiteString("-lc"), color.HiWhiteString("--lowerCamel"))
-	fmt.Printf("%s %s | %s\n", color.HiMagentaString("*"), color.HiWhiteString("-ss"), color.HiWhiteString("--screamingSnake"))
-	fmt.Printf("%s %s | %s\n", color.HiCyanString("*"), color.HiWhiteString("-sk"), color.HiWhiteString("--screamingKebab"))
+	fmt.Printf("%s %s | %s\n", color.HiYellowString("*"), color.HiWhiteString("-n "), color.HiWhiteString("--normal"))
+	fmt.Printf("%s %s | %s\n", color.HiMagentaString("*"), color.HiWhiteString("-lc"), color.HiWhiteString("--lowerCamel"))
+	fmt.Printf("%s %s | %s\n", color.HiCyanString("*"), color.HiWhiteString("-ss"), color.HiWhiteString("--screamingSnake"))
+	fmt.Printf("%s %s | %s\n", color.HiRedString("*"), color.HiWhiteString("-sk"), color.HiWhiteString("--screamingKebab"))
+	fmt.Printf("%s %s | %s\n", color.HiGreenString("*"), color.HiWhiteString("-sn"), color.HiWhiteString("--screamingNormal"))
 	fmt.Println("")
 
 	/* Show the message at the end */
@@ -66,10 +70,11 @@ func fixFileName(filePath string) {
 		case "-k","--kebab": newFileName = strcase.ToKebab(fileBaseName)
 		case "-c","--camel": newFileName = strcase.ToCamel(fileBaseName)
 		case "-s","--snake": newFileName = strcase.ToSnake(fileBaseName)
-		case "-n","--normal": newFileName = strcase.ToDelimited(fileBaseName, " ")
+		case "-n","--normal": newFileName = strcase.ToDelimited(fileBaseName, ' ')
 		case "-lc","--lowerCamel": newFileName = strcase.ToLowerCamel(fileBaseName)
 		case "-ss","--screamingSnake": newFileName = strcase.ToScreamingSnake(fileBaseName)
 		case "-sk","--screamingKebab": newFileName = strcase.ToScreamingKebab(fileBaseName)
+		case "-sn","--screamingNormal": newFileName = strings.ToUpper(strcase.ToDelimited(fileBaseName, ' '))
 
 		default: newFileName = strcase.ToKebab(fileBaseName)
 	}
@@ -84,7 +89,7 @@ func fixFileName(filePath string) {
 		fmt.Scan(&confirmRename)
 
 	} else {
-		fmt.Printf("%s -> %s", color.HiRedString("[" + fileName + "]"), color.HiGreenString("[" + newFileName + "]"))
+		fmt.Printf("%s -> %s\n", color.HiRedString("[" + fileName + "]"), color.HiGreenString("[" + newFileName + "]"))
 	}
 
 	/* Rename the user provided files */
@@ -99,7 +104,10 @@ func fixFileName(filePath string) {
 /* Function to fix file names */
 func main() {
 
-	/* Iterate through the arguments if there are enough arguments */
+	/* Show the pluto label at start */
+	plutoLogo()
+
+	/* Iterate into the args if there are enough args */
 	if len(os.Args) > 2 {
 		for _, f := range os.Args[2:] {
 
