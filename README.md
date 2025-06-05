@@ -11,7 +11,7 @@ Try these commands to install.
 ```bash
 xz --decompress ${downloaded_file_name}.xz
 chmod +x ${downloaded_file_name}
-sudo -i mv ${downloaded_file_name} /usr/local/bin/pluto
+sudo mv -i ${downloaded_file_name} /usr/local/bin/pluto
 ```
 
 # Uninstall
