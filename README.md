@@ -22,6 +22,10 @@ Remove the pluto binary from path.
 sudo rm -i /usr/local/bin/pluto
 ```
 
+# Todos
+
+[ ] Add normal text type.
+
 # Support
 
 Please give it a star. That's enough.
