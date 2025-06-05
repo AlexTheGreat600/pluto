@@ -38,6 +38,7 @@ func plutoHelp() {
 	fmt.Printf("%s %s | %s\n", color.HiYellowString("*"), color.HiWhiteString("-lc"), color.HiWhiteString("--lowerCamel"))
 	fmt.Printf("%s %s | %s\n", color.HiMagentaString("*"), color.HiWhiteString("-ss"), color.HiWhiteString("--screamingSnake"))
 	fmt.Printf("%s %s | %s\n", color.HiCyanString("*"), color.HiWhiteString("-sk"), color.HiWhiteString("--screamingKebab"))
+	fmt.Println("")
 
 	/* Show the message at the end */
 	os.Exit(1)
