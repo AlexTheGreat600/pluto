@@ -125,4 +125,7 @@ func main() {
 	} else {
 		plutoHelp()
 	}
+
+    /* Print next line at the end */
+    fmt.Println("")
 }
