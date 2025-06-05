@@ -24,7 +24,7 @@ sudo rm -i /usr/local/bin/pluto
 
 # Todos
 
-[ ] Add normal text type.
+- [ ] Add normal text type.
 
 # Support
 
