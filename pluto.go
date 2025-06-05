@@ -66,6 +66,7 @@ func fixFileName(filePath string) {
 		case "-k","--kebab": newFileName = strcase.ToKebab(fileBaseName)
 		case "-c","--camel": newFileName = strcase.ToCamel(fileBaseName)
 		case "-s","--snake": newFileName = strcase.ToSnake(fileBaseName)
+		case "-n","--normal": newFileName = strcase.ToDelimited(fileBaseName, " ")
 		case "-lc","--lowerCamel": newFileName = strcase.ToLowerCamel(fileBaseName)
 		case "-ss","--screamingSnake": newFileName = strcase.ToScreamingSnake(fileBaseName)
 		case "-sk","--screamingKebab": newFileName = strcase.ToScreamingKebab(fileBaseName)
