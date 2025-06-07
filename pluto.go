@@ -50,8 +50,8 @@ func plutoHelp() {
 
 /* Function to check if file exists or not */
 func fileExists(path string) bool {
-    _, err := os.Stat(path)
-    return !os.IsNotExist(err)
+        _, err := os.Stat(path)
+        return !os.IsNotExist(err)
 }
 
 /* Function to fix file names */
@@ -126,6 +126,6 @@ func main() {
                 plutoHelp()
         }
 
-    /* Print next line at the end */
-    fmt.Println("")
+        /* Print next line at the end */
+        fmt.Println("")
 }
