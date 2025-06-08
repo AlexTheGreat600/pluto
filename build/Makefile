@@ -4,7 +4,16 @@
 # |_|  |_/_/ \_\_|\_\___|
 #
 
-build-all: build-linux build-windows build-android build-unix
+build-all: build-linux build-windows build-android build-unix zip-all
+
+#   ___ _    ___   _   _  _
+#  / __| |  | __| /_\ | \| |
+# | (__| |__| _| / _ \| .` |
+#  \___|____|___/_/ \_\_|\_|
+#
+
+clean:
+	rm pluto-*
 
 #  _    ___ _  _ _   ___  __
 # | |  |_ _| \| | | | \ \/ /
@@ -49,3 +58,12 @@ build-unix:
 	GOOS=openbsd GOARCH=amd64 	go build -o pluto-openbsd-amd64 ../pluto.go
 	GOOS=netbsd GOARCH=386 		go build -o pluto-netbsd-i386 	../pluto.go
 	GOOS=netbsd GOARCH=amd64 	go build -o pluto-netbsd-amd64 	../pluto.go
+
+#  _______ ___
+# |_  /_ _| _ \
+#  / / | ||  _/
+# /___|___|_|
+#
+
+zip-all:
+	xz -9 pluto-*
