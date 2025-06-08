@@ -2,7 +2,7 @@
 
 🚀 Pluto - Command To Fix File Names Written In Golang.
 
-![2025-06-05-172536_1366x768_scrot](https://github.com/user-attachments/assets/d7eb9ef5-52a1-4506-addd-e08051ddc438)
+![pluto-screenshot.png](https://github.com/user-attachments/assets/c08c2ae8-91e5-43d6-83e7-1a4512a35df2)
 
 # Install
 
