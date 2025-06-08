@@ -54,6 +54,11 @@ func fileExists(path string) bool {
         return !os.IsNotExist(err)
 }
 
+/* Function to uppercase first byte of string  */
+func upperFirstChar(lowerString string) string {
+        return strings.ToUpper(lowerString[:1]) + lowerString[1:]
+}
+
 /* Function to fix file names */
 func fixFileName(filePath string) {
 
@@ -75,6 +80,11 @@ func fixFileName(filePath string) {
                 case "-ss","--screamingSnake": newFileName = strcase.ToScreamingSnake(fileBaseName)
                 case "-sk","--screamingKebab": newFileName = strcase.ToScreamingKebab(fileBaseName)
                 case "-sn","--screamingNormal": newFileName = strings.ToUpper(strcase.ToDelimited(fileBaseName, ' '))
+
+                case "-uk","--upperKebab": newFileName = upperFirstChar(strcase.ToKebab(fileBaseName))
+                case "-uc","--upperCamel": newFileName = upperFirstChar(strcase.ToCamel(fileBaseName))
+                case "-us","--upperSnake": newFileName = upperFirstChar(strcase.ToSnake(fileBaseName))
+                case "-un","--upperNormal": newFileName = upperFirstChar(strcase.ToDelimited(fileBaseName, ' '))
 
                 default: newFileName = strcase.ToKebab(fileBaseName)
         }
